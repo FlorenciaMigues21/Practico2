@@ -1,15 +1,8 @@
 from peewee import ForeignKeyField
-
+from db import BaseModel
 from entities.Pedido import Pedido
 
 
-class Pedido_compuesto:
+class Pedido_compuesto(BaseModel):
     _id_pedido = ForeignKeyField(Pedido, primary_key=True)
-
-    def __init__(self,id_pedido):
-        self._id_pedido = id_pedido
-
-
-    @property
-    def id_pedido(self):
-        return self._id_pedido
+    _pedido_asociado = ForeignKeyField(Pedido, default=None)

@@ -1,33 +1,26 @@
-from peewee import TextField, ForeignKeyField
+from peewee import TextField, ForeignKeyField, AutoField, IntegerField
 
+from db import BaseModel
 from entities.Cliente import Cliente
 
 
-class Cuenta:
+class Cuenta(BaseModel):
     _numero_tarjeta = TextField()
-    _disponible = TextField()
+    _disponible = IntegerField()
     _propietario = ForeignKeyField(Cliente)
-    def __init__(self,numero_tarjeta,disponible, propietario):
-        self._numero_tarjeta = numero_tarjeta
-        self._disponible = disponible
-        self._propietario = propietario
 
+    def eliminar_cuenta(mail):
+        Cuenta.delete().where(Cuenta._propietario == mail).execute()
 
-    @property
-    def numero_tarjeta(self):
-        return self._numero_tarjeta
+    def aumentar_disponible(mail, aumento):
+        #idaaa = Cuenta.get(Cuenta._propietario==mail).id
+        #print(idaaa)
+        #print(Cuenta.select(Cuenta.id).where(Cuenta._propietario==mail))
 
-    @property
-    def disponible(self):
-        return self._disponible
+        temp = Cuenta.select().where(Cuenta._propietario == mail)
 
-    @disponible.setter
-    def disponible(self, disponible):
-        if disponible is not None:
-            self._disponible = disponible
-    @property
-    def propietario(self):
-        return self._propietario
+        for i in temp:
+            print(i.id)
 
     
 
