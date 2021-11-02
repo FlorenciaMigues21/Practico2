@@ -1,7 +1,7 @@
 from peewee import TextField, IntegerField
+from db import BaseModel
 
-
-class Producto:
+class Producto(BaseModel):
     _nombre_producto = TextField(primary_key=True)
     _precio = IntegerField()
     _stock = IntegerField()

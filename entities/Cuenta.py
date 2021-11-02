@@ -22,5 +22,4 @@ class Cuenta(BaseModel):
         for i in temp:
             print(i.id)
 
-    
-
+        # voy a agregar mas cosas a la bdd

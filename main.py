@@ -272,3 +272,6 @@ def menu():
 if __name__ == '__main__':
     #date_str = '09-19-2018'
 
+    prods = [['Fernet', 1], ['Coca', 3], ['Hielo', 1]]
+    acc = 1
+    crear_pedido_simple(prods, acc)
